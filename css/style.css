@@ -12,14 +12,14 @@ body {
 	color: var(--dark);
 }
 
-/* ── Navbar ── */
+/* Navbar */
 .navbar .navbar-brand {
 	font-size: 1.2rem;
 	letter-spacing: 0.04em;
 	font-weight: 700;
 }
 
-/* ── Hero ── */
+/* Hero */
 .hero {
 	background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
 	color: #fff;
@@ -50,7 +50,7 @@ body {
 	user-select: none;
 }
 
-/* ── Section helpers ── */
+/* Section helpers */
 .section-title {
 	font-size: 1.9rem;
 	font-weight: 700;
@@ -64,7 +64,7 @@ body {
 	margin: 0.5rem auto 2.5rem;
 }
 
-/* ── Project cards (home page) ── */
+/* Project cards (home page) */
 .project-card {
 	border: none;
 	border-radius: 12px;
@@ -106,47 +106,19 @@ body {
 }
 
 /* Gradient swatches per card */
-.thumb-1 {
-	background: linear-gradient(135deg, #6366f1, #8b5cf6);
-}
+.thumb-1 { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
 
-.thumb-2 {
-	background: linear-gradient(135deg, #0ea5e9, #6366f1);
-}
+.thumb-2 { background: linear-gradient(135deg, #0ea5e9, #6366f1); }
 
-.thumb-3 {
-	background: linear-gradient(135deg, #10b981, #059669);
-}
+.thumb-3 { background: linear-gradient(135deg, #a855f7, #ec4899); }
 
-.thumb-4 {
-	background: linear-gradient(135deg, #f59e0b, #ef4444);
-}
+.thumb-4 { background: linear-gradient(135deg, #3b82f6, #6366f1); }
 
-.thumb-5 {
-	background: linear-gradient(135deg, #ec4899, #8b5cf6);
-}
+.thumb-5 { background: linear-gradient(135deg, #ec4899, #8b5cf6); }
 
-.thumb-6 {
-	background: linear-gradient(135deg, #14b8a6, #0ea5e9);
-}
+.thumb-6 { background: linear-gradient(135deg, #14b8a6, #0ea5e9); }
 
-.thumb-7 {
-	background: linear-gradient(135deg, #f97316, #ef4444);
-}
-
-.thumb-8 {
-	background: linear-gradient(135deg, #a855f7, #ec4899);
-}
-
-.thumb-9 {
-	background: linear-gradient(135deg, #22c55e, #14b8a6);
-}
-
-.thumb-10 {
-	background: linear-gradient(135deg, #3b82f6, #6366f1);
-}
-
-/* ── Tech badges ── */
+/* Tech badges */
 .badge-tech {
 	background: #e0e7ff;
 	color: #3730a3;
@@ -156,7 +128,7 @@ body {
 	border-radius: 6px;
 }
 
-/* ── Buttons ── */
+/* Buttons */
 .btn-accent {
 	background: var(--accent);
 	color: #fff;
@@ -179,7 +151,7 @@ body {
 	color: #fff;
 }
 
-/* ── Footer ── */
+/* Footer */
 footer {
 	background: var(--dark);
 	color: rgba(255, 255, 255, 0.65);
@@ -196,7 +168,7 @@ footer a:hover {
 	color: #fff;
 }
 
-/* ── Project detail page ── */
+/* Project detail page */
 .project-hero {
 	background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
 	color: #fff;
@@ -231,7 +203,7 @@ footer a:hover {
 	border-bottom: none;
 }
 
-/* ── Resume page ── */
+/* Resume page */
 .resume-wrapper {
 	max-width: 860px;
 	margin: 0 auto;
