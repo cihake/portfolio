@@ -1,0 +1,214 @@
+/* ==========================================================
+   Base structure only. Colors, type, and spacing live in
+   the :root tokens so the redesign can be restyled in one place.
+   ========================================================== */
+
+:root {
+	--color-bg: #ffffff;
+	--color-text: #1a1a1a;
+	--color-muted: #666666;
+	--color-accent: #2f5bea;
+	--color-border: #e2e2e2;
+
+	--font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+	--space-1: 0.5rem;
+	--space-2: 1rem;
+	--space-3: 2rem;
+	--space-4: 4rem;
+
+	--max-width: 60rem;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	font-family: var(--font-body);
+	line-height: 1.6;
+	color: var(--color-text);
+	background: var(--color-bg);
+}
+
+img {
+	max-width: 100%;
+	display: block;
+}
+
+a {
+	color: var(--color-accent);
+}
+
+/* Layout helper */
+.container {
+	width: 100%;
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: 0 var(--space-2);
+}
+
+main {
+	flex: 1;
+	padding: var(--space-4) 0;
+}
+
+/* Skip link for keyboard users */
+.skip-link {
+	position: absolute;
+	left: -999px;
+	top: 0;
+	background: var(--color-text);
+	color: var(--color-bg);
+	padding: var(--space-1) var(--space-2);
+}
+
+.skip-link:focus {
+	left: 0;
+	z-index: 10;
+}
+
+/* Header / nav */
+.site-header {
+	border-bottom: 1px solid var(--color-border);
+}
+
+.site-header .container {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-2);
+	padding-top: var(--space-2);
+	padding-bottom: var(--space-2);
+}
+
+.site-title {
+	font-weight: 700;
+	text-decoration: none;
+	color: var(--color-text);
+}
+
+.site-nav ul {
+	display: flex;
+	gap: var(--space-3);
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.site-nav a {
+	text-decoration: none;
+	color: var(--color-text);
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+	color: var(--color-accent);
+	text-decoration: underline;
+}
+
+/* Footer */
+.site-footer {
+	border-top: 1px solid var(--color-border);
+	padding: var(--space-3) 0;
+	color: var(--color-muted);
+	font-size: 0.9rem;
+}
+
+/* Home */
+.hero h1 {
+	font-size: clamp(2rem, 6vw, 3.5rem);
+	line-height: 1.1;
+	margin: 0 0 var(--space-2);
+}
+
+.hero p {
+	max-width: 40rem;
+	color: var(--color-muted);
+	font-size: 1.15rem;
+}
+
+.button {
+	display: inline-block;
+	margin-top: var(--space-2);
+	padding: var(--space-1) var(--space-3);
+	background: var(--color-accent);
+	color: #ffffff;
+	text-decoration: none;
+	border-radius: 4px;
+}
+
+.button:hover {
+	opacity: 0.9;
+}
+
+/* Projects gallery */
+.project-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+	gap: var(--space-3);
+	list-style: none;
+	margin: var(--space-3) 0 0;
+	padding: 0;
+}
+
+.project-card a {
+	display: block;
+	height: 100%;
+	border: 1px solid var(--color-border);
+	border-radius: 6px;
+	overflow: hidden;
+	text-decoration: none;
+	color: inherit;
+}
+
+.project-card a:hover,
+.project-card a:focus-visible {
+	border-color: var(--color-accent);
+}
+
+.project-card .thumb {
+	aspect-ratio: 16 / 10;
+	background: var(--color-border);
+	display: grid;
+	place-items: center;
+	color: var(--color-muted);
+	font-size: 0.9rem;
+}
+
+.project-card .card-body {
+	padding: var(--space-2);
+}
+
+.project-card h2 {
+	margin: 0 0 var(--space-1);
+	font-size: 1.1rem;
+}
+
+.project-card p {
+	margin: 0;
+	color: var(--color-muted);
+	font-size: 0.95rem;
+}
+
+/* Resume */
+.resume section {
+	margin-top: var(--space-3);
+}
+
+.resume h2 {
+	border-bottom: 1px solid var(--color-border);
+	padding-bottom: var(--space-1);
+}
+
+.resume .entry-meta {
+	color: var(--color-muted);
+	margin: 0;
+}
