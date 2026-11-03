@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 910.17 168.75"><defs>
+    <style>
+      .desk-cls-1 {
+        fill: #b38863;
+        stroke: url(#desk-grad-2);
+      }
+
+      .desk-cls-1, .desk-cls-2 {
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+
+      .desk-cls-2 {
+        fill: #a06a3c;
+        stroke: url(#desk-grad-1);
+      }
+    </style>
+    <linearGradient id="desk-grad-1" x1="109.28" y1="354.97" x2="801.45" y2="-44.65" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f632ff"/>
+      <stop offset=".27" stop-color="#f331fd"/>
+      <stop offset=".43" stop-color="#eb31f6"/>
+      <stop offset=".57" stop-color="#dc31eb"/>
+      <stop offset=".69" stop-color="#c830dc"/>
+      <stop offset=".8" stop-color="#ad2fc7"/>
+      <stop offset=".9" stop-color="#8d2eaf"/>
+      <stop offset="1" stop-color="#682d92"/>
+      <stop offset="1" stop-color="#662d91"/>
+    </linearGradient>
+    <linearGradient id="desk-grad-2" x1="100.97" y1="318.46" x2="784.58" y2="-76.22" xlink:href="#desk-grad-1"/>
+  </defs>
+  
+    <g id="desk">
+      <path id="desk-edge" class="desk-cls-2" d="M1.5,145.16h907.17v19.42c0,1.47-1.19,2.66-2.66,2.66H4.16c-1.47,0-2.66-1.19-2.66-2.66v-19.42h0Z"/>
+      <path id="desk-top" class="desk-cls-1" d="M4.22,145.16h901.74c2.42,0,3.63-2.92,1.92-4.63L775,7.66c-3.95-3.95-9.3-6.16-14.88-6.16H150.05c-5.58,0-10.93,2.22-14.88,6.16L2.3,140.53c-1.71,1.71-.5,4.63,1.92,4.63Z"/>
+    </g>
+</svg>

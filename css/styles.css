@@ -4,11 +4,14 @@
    ========================================================== */
 
 :root {
-	--color-bg: #ffffff;
+	--color-bg: #f3e9dc;
 	--color-text: #1a1a1a;
 	--color-muted: #666666;
-	--color-accent: #2f5bea;
+	--color-accent: #0d9196;
 	--color-border: #e2e2e2;
+	--color-wall: var(--color-bg);
+	--color-brand: #662d91;
+	--color-pop: #f632ff;
 
 	--font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
@@ -76,6 +79,7 @@ main {
 
 /* Header / nav */
 .site-header {
+	background: white;
 	border-bottom: 1px solid var(--color-border);
 }
 
@@ -211,4 +215,129 @@ main {
 .resume .entry-meta {
 	color: var(--color-muted);
 	margin: 0;
+}
+
+/* ==========================================================
+   Home: desk scene
+   One set of drawings, two arrangements. Items are positioned
+   in % of the scene's width/height. Wide layout by default;
+   phones (under 700px) get a taller, larger arrangement.
+   ========================================================== */
+
+.scene {
+	position: relative;
+	width: 100%;
+	max-width: 910px;
+	margin: var(--space-3) auto 0;
+	aspect-ratio: 910.17 / 600;
+	overflow: hidden;
+	background: var(--color-wall);
+}
+
+.scene .item {
+	position: absolute;
+	display: block;
+}
+
+.scene .art {
+	display: block;
+	width: 100%;
+	height: auto;
+	overflow: visible;
+}
+
+/* Text labels: the real, keyboard-friendly links */
+.scene .chip {
+	position: absolute;
+	transform: translateX(-50%);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 44px;
+	min-height: 44px;
+	padding: 0 18px;
+	border: 2px solid var(--color-brand);
+	border-radius: 999px;
+	background: #ffffff;
+	color: var(--color-text);
+	font-weight: 600;
+	font-size: 1rem;
+	line-height: 1;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.scene .chip:hover {
+	background: #fbe6ff;
+}
+
+.scene .chip:focus-visible {
+	outline: 3px solid var(--color-pop);
+	outline-offset: 3px;
+}
+
+/* Hover effects target the named layers inside the SVGs */
+@media (hover: hover) and (pointer: fine) {
+	.scene #display,
+	.scene #cork-surface {
+		transition: fill 0.25s;
+	}
+
+	.scene .obj:hover #display {
+		fill: #3b5fa8;
+	}
+
+	.scene .obj:hover #cork-surface {
+		fill: #ffe3b8;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.scene #display,
+	.scene #cork-surface {
+		transition: none;
+	}
+}
+
+/* Wide arrangement */
+.i-corkboard { left: 4.395%; top: 3.333%; width: 46.153%; }
+.i-desk { left: 0.000%; top: 71.875%; width: 100.000%; }
+.i-monitor { left: 29.115%; top: 28.667%; width: 41.826%; }
+.i-headphones { left: 68.119%; top: 73.000%; width: 20.924%; }
+.i-planter { left: 17.030%; top: 66.333%; width: 9.720%; }
+.c-resume { left: 16.480%; top: 57.000%; }
+.c-projects { left: 49.991%; top: 84.667%; }
+
+/* Wide: labels hidden visually. They stay real links in the tab order
+   and appear when focused, so keyboard users can still reach them. */
+@media (min-width: 700px) {
+	.scene .chip:not(:focus-visible) {
+		width: 1px;
+		height: 1px;
+		min-width: 0;
+		min-height: 0;
+		padding: 0;
+		border: 0;
+		overflow: hidden;
+		clip-path: inset(50%);
+	}
+}
+
+/* Tall arrangement (phones) */
+@media (max-width: 699px) {
+	.scene {
+		width: auto;
+		max-width: none;
+		margin-right: calc(var(--space-2) * -1);
+		margin-left: calc(var(--space-2) * -1);
+		aspect-ratio: 390 / 700;
+	}
+
+	.i-corkboard { left: 11.538%; top: 3.429%; width: 76.923%; }
+	.i-desk { left: -65.385%; top: 75.714%; width: 230.769%; }
+	.i-monitor { left: 12.821%; top: 46.429%; width: 74.359%; }
+	.i-headphones { left: 64.103%; top: 78.571%; width: 34.872%; }
+	.i-planter { left: 11.026%; top: 78.429%; width: 20.513%; }
+	.c-resume { left: 50.000%; top: 37.000%; }
+	.c-projects { left: 50.000%; top: 84.571%; }
 }

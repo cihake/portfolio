@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 88.47 87.38"><defs>
+    <style>
+      .planter-cls-1 {
+        fill: #503380;
+        stroke: url(#planter-grad-2);
+      }
+
+      .planter-cls-1, .planter-cls-2 {
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+
+      .planter-cls-2 {
+        fill: #a065ff;
+        stroke: url(#planter-grad-1);
+      }
+    </style>
+    <linearGradient id="planter-grad-1" x1="0" y1="47.09" x2="88.44" y2="47.09" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f632ff"/>
+      <stop offset="1" stop-color="#662d91"/>
+    </linearGradient>
+    <linearGradient id="planter-grad-2" x1="44.25" y1="16.18" x2="44.25" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f632ff"/>
+      <stop offset="1" stop-color="#a065ff"/>
+    </linearGradient>
+  </defs>
+  
+    <g id="planter">
+      <path id="outer-side" class="planter-cls-2" d="M85.68,8.3c.71,0,1.28.44,1.26.96l-7.31,66.44c0,3.33-12.93,10.18-35.41,10.18s-35.41-6.85-35.41-10.18L1.5,9.26c-.02-.53.55-.96,1.26-.96h82.92Z"/>
+      <path id="opening" class="planter-cls-1" d="M86.97,8.3c0-1.8-19.13-6.8-42.72-6.8S1.53,6.5,1.53,8.3s.17,6.38,42.72,6.38,42.72-4.58,42.72-6.38Z"/>
+    </g>
+</svg>

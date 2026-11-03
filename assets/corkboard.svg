@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 420.07 315.8"><defs>
+    <style>
+      .corkboard-cls-1 {
+        fill: #ffd497;
+        stroke: #f632ff;
+      }
+
+      .corkboard-cls-1, .corkboard-cls-2 {
+        stroke-miterlimit: 10;
+      }
+
+      .corkboard-cls-2 {
+        fill: #e09d70;
+        stroke: url(#corkboard-grad-1);
+        stroke-width: 3px;
+      }
+    </style>
+    <linearGradient id="corkboard-grad-1" x1="0" y1="157.9" x2="420.07" y2="157.9" gradientTransform="translate(52.13 367.93) rotate(-90)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f632ff"/>
+      <stop offset=".13" stop-color="#ee31f9"/>
+      <stop offset=".32" stop-color="#d931e9"/>
+      <stop offset=".56" stop-color="#b72fcf"/>
+      <stop offset=".83" stop-color="#882eab"/>
+      <stop offset="1" stop-color="#662d91"/>
+    </linearGradient>
+  </defs>
+  
+    <g id="corkboard">
+      <rect id="corkboard-frame" class="corkboard-cls-2" x="53.63" y="-50.63" width="312.8" height="417.07" rx="32" ry="32" transform="translate(367.93 -52.13) rotate(90)"/>
+      <rect id="cork-surface" class="corkboard-cls-1" x="64.76" y="-39.51" width="290.56" height="394.82" rx="21.8" ry="21.8" transform="translate(367.93 -52.13) rotate(90)"/>
+    </g>
+</svg>
