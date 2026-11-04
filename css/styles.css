@@ -3,15 +3,31 @@
    the :root tokens so the redesign can be restyled in one place.
    ========================================================== */
 
+/* ==========================================================
+   Themes
+   Light is the default. Dark applies when the browser prefers it
+   (and the visitor hasn't picked light), or when js/theme.js sets
+   data-theme="dark" on <html>. Only UI colors change here; the SVG
+   drawings keep their own colors.
+   The two dark blocks below must stay identical.
+   ========================================================== */
+
 :root {
-	--color-bg: #f3e9dc;
+	color-scheme: light;
+	--color-white: #ffffff;
+	--color-bg: #fef6ff;
 	--color-text: #1a1a1a;
-	--color-muted: #666666;
+	--color-muted: #888288;
 	--color-accent: #0d9196;
 	--color-border: #e2e2e2;
 	--color-wall: var(--color-bg);
-	--color-brand: #662d91;
+	--color-brand: #541c80;
 	--color-pop: #f632ff;
+	--color-surface: #ffffff;
+	--color-on-accent: #ffffff;
+	--color-accent-soft: rgba(13, 145, 150, 0.12);
+	--color-chip-border: var(--color-brand);
+	--color-chip-hover: #fbe6ff;
 
 	--font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
@@ -21,6 +37,36 @@
 	--space-4: 4rem;
 
 	--max-width: 60rem;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) {
+		color-scheme: dark;
+		--color-bg: #1c1524;
+		--color-text: #f3ecf7;
+		--color-muted: #b8aebf;
+		--color-accent: #45d0d6;
+		--color-border: #3b2f48;
+		--color-surface: #281e33;
+		--color-on-accent: #0f0a14;
+		--color-accent-soft: rgba(69, 208, 214, 0.16);
+		--color-chip-border: #b98be0;
+		--color-chip-hover: #3a2a48;
+	}
+}
+
+:root[data-theme="dark"] {
+	color-scheme: dark;
+	--color-bg: #1c1524;
+	--color-text: #f3ecf7;
+	--color-muted: #b8aebf;
+	--color-accent: #45d0d6;
+	--color-border: #3b2f48;
+	--color-surface: #281e33;
+	--color-on-accent: #0f0a14;
+	--color-accent-soft: rgba(69, 208, 214, 0.16);
+	--color-chip-border: #b98be0;
+	--color-chip-hover: #3a2a48;
 }
 
 *,
@@ -79,7 +125,7 @@ main {
 
 /* Header / nav */
 .site-header {
-	background: white;
+	background: var(--color-surface);
 	border-bottom: 1px solid var(--color-border);
 }
 
@@ -101,6 +147,7 @@ main {
 
 .site-nav ul {
 	display: flex;
+	align-items: center;
 	gap: var(--space-3);
 	list-style: none;
 	margin: 0;
@@ -116,13 +163,73 @@ main {
 .site-nav a[aria-current="page"] {
 	color: var(--color-accent);
 	text-decoration: underline;
+	text-underline-offset: 0.25em;
+}
+
+/* Theme toggle (hidden until js/theme.js confirms scripting works) */
+.theme-toggle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	padding: 0;
+	border: 0;
+	border-radius: 999px;
+	background: transparent;
+	color: var(--color-text);
+	cursor: pointer;
+}
+
+.theme-toggle[hidden] {
+	display: none;
+}
+
+.theme-toggle:hover {
+	color: var(--color-accent);
+	background: var(--color-accent-soft);
+}
+
+.theme-toggle:focus-visible {
+	outline: 3px solid var(--color-pop);
+	outline-offset: 2px;
+}
+
+.theme-toggle svg {
+	width: 22px;
+	height: 22px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+/* Show the icon for the theme you would switch TO */
+.theme-toggle .icon-sun {
+	display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-moon {
+	display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-sun {
+	display: block;
+}
+
+@media (max-width: 699px) {
+	.site-nav ul {
+		gap: var(--space-2);
+	}
 }
 
 /* Footer */
 .site-footer {
 	border-top: 1px solid var(--color-border);
+	background: var(--color-brand);
 	padding: var(--space-3) 0;
-	color: var(--color-muted);
+	color: var(--color-pop);
 	font-size: 0.9rem;
 }
 
@@ -139,18 +246,53 @@ main {
 	font-size: 1.15rem;
 }
 
+.hero-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+	margin-top: var(--space-2);
+}
+
 .button {
 	display: inline-block;
-	margin-top: var(--space-2);
 	padding: var(--space-1) var(--space-3);
+	border: 2px solid var(--color-accent);
 	background: var(--color-accent);
-	color: #ffffff;
+	color: var(--color-on-accent);
 	text-decoration: none;
-	border-radius: 4px;
+	border-radius: 999px;
 }
 
 .button:hover {
 	opacity: 0.9;
+}
+
+.button:focus-visible {
+	outline: 3px solid var(--color-pop);
+	outline-offset: 3px;
+}
+
+/* Secondary: outlined, fills softly on hover */
+.button-secondary {
+	background: transparent;
+	color: var(--color-accent);
+}
+
+.button-secondary:hover {
+	background: var(--color-accent-soft);
+	opacity: 1;
+}
+
+/* Text for screen readers only */
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
 }
 
 /* Projects gallery */
@@ -189,6 +331,7 @@ main {
 
 .project-card .card-body {
 	padding: var(--space-2);
+	background: var(--color-surface);
 }
 
 .project-card h2 {
@@ -215,6 +358,36 @@ main {
 .resume .entry-meta {
 	color: var(--color-muted);
 	margin: 0;
+}
+
+.resume .summary {
+	max-width: 45rem;
+}
+
+.resume .skills {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	gap: var(--space-1) var(--space-3);
+	margin: 0;
+}
+
+.resume .skills dt {
+	font-weight: 600;
+}
+
+.resume .skills dd {
+	margin: 0;
+}
+
+@media (max-width: 699px) {
+	.resume .skills {
+		grid-template-columns: 1fr;
+		gap: 0;
+	}
+
+	.resume .skills dd {
+		margin-bottom: var(--space-2);
+	}
 }
 
 /* ==========================================================
@@ -256,9 +429,9 @@ main {
 	min-width: 44px;
 	min-height: 44px;
 	padding: 0 18px;
-	border: 2px solid var(--color-brand);
+	border: 2px solid var(--color-chip-border);
 	border-radius: 999px;
-	background: #ffffff;
+	background: var(--color-surface);
 	color: var(--color-text);
 	font-weight: 600;
 	font-size: 1rem;
@@ -268,7 +441,7 @@ main {
 }
 
 .scene .chip:hover {
-	background: #fbe6ff;
+	background: var(--color-chip-hover);
 }
 
 .scene .chip:focus-visible {
@@ -309,7 +482,7 @@ main {
 .c-projects { left: 49.991%; top: 84.667%; }
 
 /* Wide: labels hidden visually. They stay real links in the tab order
-   and appear when focused, so keyboard users can still reach them. */
+	and appear when focused, so keyboard users can still reach them. */
 @media (min-width: 700px) {
 	.scene .chip:not(:focus-visible) {
 		width: 1px;
@@ -323,7 +496,7 @@ main {
 	}
 }
 
-/* Tall arrangement (phones) */
+/* Tall arrangement (i.e., mobile devices) */
 @media (max-width: 699px) {
 	.scene {
 		width: auto;
