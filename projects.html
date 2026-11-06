@@ -41,6 +41,16 @@
 			<p>[ DISCLAIMER: THIS PAGE CURRENTLY CONTAINS PLACEHOLDER CONTENT. I'M STILL DEBUGGING. ]</p>
 
 			<div class="projects-toolbar" id="projects-toolbar" hidden>
+				<div class="sort-control">
+					<label for="sort-select">Sort by</label>
+					<select id="sort-select">
+						<option value="newest">Newest first</option>
+						<option value="oldest">Oldest first</option>
+						<option value="az">Title A&ndash;Z</option>
+						<option value="za">Title Z&ndash;A</option>
+					</select>
+				</div>
+				<p class="visually-hidden" id="projects-status" role="status"></p>
 				<div class="view-toggle" id="view-toggle" role="group" aria-label="Project layout">
 					<button type="button" data-view="grid" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Grid</span></button>
 					<button type="button" data-view="list" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg><span>List</span></button>
@@ -59,21 +69,6 @@
 								<li>React</li>
 								<li>Node.js</li>
 								<li>PostgreSQL</li>
-							</ul>
-						</div>
-					</a>
-				</li>
-				<li class="project-card" data-start="2024-11" data-tools="html css javascript">
-					<a href="projects/project-2.html">
-						<div class="thumb">Thumbnail</div>
-						<div class="card-body">
-							<h2>Whisker Watch</h2>
-							<p>A browsable gallery of adoptable cats, with a simple shortlist feature.</p>
-							<p class="card-meta">Started <time datetime="2024-11">Nov 2024</time></p>
-							<ul class="tag-list" aria-label="Tools used">
-								<li>HTML</li>
-								<li>CSS</li>
-								<li>JavaScript</li>
 							</ul>
 						</div>
 					</a>
@@ -103,6 +98,21 @@
 							<ul class="tag-list" aria-label="Tools used">
 								<li>Python</li>
 								<li>MongoDB</li>
+								<li>JavaScript</li>
+							</ul>
+						</div>
+					</a>
+				</li>
+				<li class="project-card" data-start="2024-11" data-tools="html css javascript">
+					<a href="projects/project-2.html">
+						<div class="thumb">Thumbnail</div>
+						<div class="card-body">
+							<h2>Whisker Watch</h2>
+							<p>A browsable gallery of adoptable cats, with a simple shortlist feature.</p>
+							<p class="card-meta">Started <time datetime="2024-11">Nov 2024</time></p>
+							<ul class="tag-list" aria-label="Tools used">
+								<li>HTML</li>
+								<li>CSS</li>
 								<li>JavaScript</li>
 							</ul>
 						</div>
@@ -140,6 +150,7 @@
 					</a>
 				</li>
 			</ul>
+			<script src="js/projects-sort.js"></script>
 		</div>
 	</main>
 
