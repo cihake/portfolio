@@ -373,6 +373,142 @@ main {
 	font-size: 0.8rem;
 }
 
+/* Projects toolbar and grid/list view toggle (hidden until js/projects.js runs) */
+.projects-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	gap: var(--space-2);
+	margin-top: var(--space-3);
+}
+
+.projects-toolbar[hidden] {
+	display: none;
+}
+
+.projects-toolbar + .project-grid {
+	margin-top: var(--space-2);
+}
+
+.view-toggle {
+	display: inline-flex;
+	border: 2px solid var(--color-accent);
+	border-radius: 999px;
+	overflow: hidden;
+}
+
+.view-toggle button {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	min-height: 44px;
+	padding: 0 var(--space-2);
+	border: 0;
+	background: transparent;
+	color: var(--color-text);
+	font: inherit;
+	font-size: 0.95rem;
+	cursor: pointer;
+}
+
+.view-toggle button:hover:not([aria-pressed="true"]) {
+	background: var(--color-accent-soft);
+}
+
+.view-toggle button[aria-pressed="true"] {
+	background: var(--color-accent);
+	color: var(--color-on-accent);
+}
+
+.view-toggle button:focus-visible {
+	outline: 3px solid var(--color-pop);
+	outline-offset: -3px;
+}
+
+.view-toggle svg {
+	width: 18px;
+	height: 18px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+/* Compact list view: one row per project */
+:root[data-view="list"] .project-grid {
+	grid-template-columns: 1fr;
+	gap: var(--space-1);
+}
+
+:root[data-view="list"] .project-card a {
+	flex-direction: row;
+}
+
+:root[data-view="list"] .project-card .thumb {
+	flex: none;
+	width: 6rem;
+	aspect-ratio: auto;
+	font-size: 0.7rem;
+}
+
+:root[data-view="list"] .project-card .card-body {
+	display: grid;
+	gap: 0.15rem var(--space-2);
+	align-content: center;
+	padding: var(--space-1) var(--space-2);
+}
+
+:root[data-view="list"] .project-card h2 {
+	margin: 0;
+	font-size: 1rem;
+}
+
+:root[data-view="list"] .project-card .card-body p,
+:root[data-view="list"] .project-card .card-body p + p {
+	margin: 0;
+}
+
+:root[data-view="list"] .tag-list {
+	margin: 0.25rem 0 0;
+}
+
+@media (min-width: 700px) {
+	/* Title and date on the first line, description and tools on the second */
+	:root[data-view="list"] .project-card .card-body {
+		grid-template-columns: 1fr auto;
+		grid-template-areas:
+			"title meta"
+			"desc tags";
+		align-items: center;
+	}
+
+	:root[data-view="list"] .project-card h2 {
+		grid-area: title;
+	}
+
+	:root[data-view="list"] .project-card .card-body > p:first-of-type {
+		grid-area: desc;
+	}
+
+	:root[data-view="list"] .project-card .card-meta {
+		grid-area: meta;
+		justify-self: end;
+	}
+
+	:root[data-view="list"] .tag-list {
+		grid-area: tags;
+		justify-content: flex-end;
+		margin: 0;
+	}
+}
+
+@media (max-width: 699px) {
+	:root[data-view="list"] .project-card .thumb {
+		width: 4.5rem;
+	}
+}
+
 /* Resume */
 .resume section {
 	margin-top: var(--space-3);

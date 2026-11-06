@@ -8,6 +8,7 @@
 	<meta name="description" content="Selected web development and design projects by Eva Cihak.">
 	<link rel="stylesheet" href="css/styles.css">
 	<script src="js/theme.js"></script>
+	<script src="js/projects.js"></script>
 </head>
 
 <body>
@@ -36,7 +37,15 @@
 		<div class="container">
 			<h1>Projects</h1>
 			<p>A selection of websites and apps I've designed and built. Choose a project to learn more about it.</p>
+
 			<p>[ DISCLAIMER: THIS PAGE CURRENTLY CONTAINS PLACEHOLDER CONTENT. I'M STILL DEBUGGING. ]</p>
+
+			<div class="projects-toolbar" id="projects-toolbar" hidden>
+				<div class="view-toggle" id="view-toggle" role="group" aria-label="Project layout">
+					<button type="button" data-view="grid" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Grid</span></button>
+					<button type="button" data-view="list" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg><span>List</span></button>
+				</div>
+			</div>
 
 			<ul class="project-grid">
 				<li class="project-card" data-start="2025-09" data-tools="react nodejs postgresql">
