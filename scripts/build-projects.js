@@ -76,7 +76,7 @@ function findField(html, name) {
 }
 
 function slugify(name) {
-	return name.toLowerCase().replace(/\+/g, 'plus').replace(/#/g, 'sharp').replace(/[^a-z0-9]+/g, '');
+	return name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\+/g, 'plus').replace(/#/g, 'sharp').replace(/[^a-z0-9]+/g, '');
 }
 
 function monthLabel(iso) {
