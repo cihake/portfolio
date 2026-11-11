@@ -751,6 +751,7 @@ main {
 
 .project figure img {
 	width: 100%;
+	max-width: 40rem;
 	height: auto;
 	border: 1px solid var(--color-border);
 	border-radius: 6px;
@@ -933,4 +934,123 @@ main {
 	.i-planter { left: 11.026%; top: 78.429%; width: 20.513%; }
 	.c-resume { left: 50.000%; top: 37.000%; }
 	.c-projects { left: 50.000%; top: 84.571%; }
+}
+
+/* Click-to-enlarge screenshots (js/lightbox.js) */
+.zoom-button {
+	display: block;
+	width: 100%;
+	max-width: 40rem;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: inherit;
+	font: inherit;
+	line-height: 0;
+	cursor: zoom-in;
+}
+
+.zoom-button:focus-visible {
+	outline: 3px solid var(--color-pop);
+	outline-offset: 3px;
+	border-radius: 6px;
+}
+
+.zoom-button:hover img {
+	border-color: var(--color-accent);
+}
+
+.lightbox-open {
+	overflow: hidden;
+}
+
+.lightbox {
+	width: 100%;
+	height: 100%;
+	max-width: none;
+	max-height: none;
+	margin: 0;
+	padding: var(--space-3) var(--space-2) var(--space-2);
+	border: 0;
+	background: transparent;
+	color: #ffffff;
+	overflow: hidden;
+}
+
+.lightbox[open] {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.lightbox::backdrop {
+	background: rgba(0, 0, 0, 0.85);
+}
+
+.lightbox-figure {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--space-1);
+	max-width: 100%;
+	max-height: 100%;
+	margin: 0;
+}
+
+.lightbox-img {
+	display: block;
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: calc(100vh - 8rem);
+	max-height: calc(100dvh - 8rem);
+	object-fit: contain;
+	border-radius: 6px;
+	background: var(--color-white);
+}
+
+.lightbox-caption {
+	margin: 0;
+	text-align: center;
+	font-size: 0.95rem;
+}
+
+.lightbox-close {
+	position: fixed;
+	top: var(--space-2);
+	right: var(--space-2);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	padding: 0;
+	border: 2px solid #ffffff;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, 0.6);
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.lightbox-close:hover {
+	background: #ffffff;
+	color: #000000;
+}
+
+.lightbox-close:focus-visible {
+	outline: 3px solid var(--color-pop);
+	outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.lightbox[open] {
+		animation: lightbox-in 150ms ease-out;
+	}
+
+	@keyframes lightbox-in {
+		from {
+			opacity: 0;
+		}
+	}
 }

@@ -4,10 +4,11 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>PokéBase | Eva Cihak</title>
-	<meta name="description" content="PokéBase: a Pokédex web app built with vanilla JavaScript that pulls live data from PokéAPI.">
+	<title>Fetch 'Em All | Eva Cihak</title>
+	<meta name="description" content="Fetch 'Em All: a Pokédex web app built with vanilla JavaScript that pulls live data from PokéAPI.">
 	<link rel="stylesheet" href="../css/styles.css">
 	<script src="../js/theme.js"></script>
+	<script src="../js/lightbox.js" defer></script>
 </head>
 
 <body>
@@ -36,7 +37,7 @@
 		<article class="container project">
 			<p class="back-link"><a href="../projects.html">&larr; All projects</a></p>
 
-			<h1 data-project="title">PokéBase</h1>
+			<h1 data-project="title">Fetch 'Em All</h1>
 			<p class="project-summary" data-project="description">A Pokédex web app that pulls live data from PokéAPI. Browse and search Pokémon, then open a detail view with abilities and base stats.</p>
 
 			<dl class="project-details">
@@ -61,13 +62,18 @@
 				</div>
 				<div>
 					<dt>Source code</dt>
-					<dd><a href="https://github.com/cihake/pokebase" target="_blank" rel="noopener noreferrer">github.com/cihake/pokebase</a></dd>
+					<dd><a href="https://github.com/cihake/fetch-em-all" target="_blank" rel="noopener noreferrer">github.com/cihake/fetch-em-all</a></dd>
 				</div>
 			</dl>
 
+			<figure>
+				<img data-project="thumbnail" src="../assets/projects/fetch-em-all/card.png" alt="The detail view for Decidueye-Hisui, open over search results for &quot;hisui&quot;. It shows the Pok&eacute;mon's artwork, Grass and Fighting type badges, height, weight, abilities, base experience, and a bar for each of the six base stats." width="1068" height="1027">
+				<figcaption>The detail view for a Pok&eacute;mon found by searching &ldquo;hisui&rdquo;.</figcaption>
+			</figure>
+
 			<section aria-labelledby="overview">
 				<h2 id="overview">Overview</h2>
-				<p>PokéBase is a client-side JavaScript app built for WEB 241. It fetches live data from <a href="https://pokeapi.co/" target="_blank" rel="noopener noreferrer">PokéAPI</a>, a public web API, and presents it as a browsable, searchable Pokédex. The assignment asked for modern, modular JavaScript that handles loading, empty, and error states and stays accessible, and those requirements shaped the design.</p>
+				<p>Fetch 'Em All is a client-side JavaScript app built for WEB 241. It fetches live data from <a href="https://pokeapi.co/" target="_blank" rel="noopener noreferrer">PokéAPI</a>, a public web API, and presents it as a browsable, searchable Pokédex. The assignment asked for modern, modular JavaScript that handles loading, empty, and error states and stays accessible, and those requirements shaped the design.</p>
 			</section>
 
 			<section aria-labelledby="features">
@@ -79,6 +85,18 @@
 					<li>Loading, error, and &ldquo;no results&rdquo; states for every request.</li>
 					<li>Keyboard and screen reader support. Cards can be focused and opened with Enter or Space, Escape closes the detail view and returns focus to the card you opened, and page changes are announced.</li>
 				</ul>
+			</section>
+
+			<section aria-labelledby="screenshots">
+				<h2 id="screenshots">More screenshots</h2>
+				<figure>
+					<img src="../assets/projects/fetch-em-all/gallery.png" alt="The home page. A red header holds the Fetch 'Em All logo and a search box. Below it are a welcome message, two ways to search, and a grid of Pok&eacute;mon cards from Bulbasaur to Pidgeot, each with a sprite, number, name, and type badges." width="1302" height="1027" loading="lazy">
+					<figcaption>The home page, showing the first page of Pok&eacute;mon.</figcaption>
+				</figure>
+				<figure>
+					<img src="../assets/projects/fetch-em-all/search.png" alt="Search results for &quot;mega&quot;, page 5 of 5. A grid of Mega form cards with type badges is followed by Previous and Next buttons, with Next disabled because this is the last page." width="1068" height="1027" loading="lazy">
+					<figcaption>Search results are paged too, with the Next button disabled on the last page.</figcaption>
+				</figure>
 			</section>
 
 			<section aria-labelledby="how-its-built">

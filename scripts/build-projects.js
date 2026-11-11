@@ -3,7 +3,7 @@
    Each project page (projects/*.html) is the single source of truth for its
    own card. Mark the facts in the page with data-project attributes:
 
-     <h1 data-project="title">PokéBase</h1>
+     <h1 data-project="title">Fetch 'Em All</h1>
      <p data-project="description">One or two sentences.</p>
      <time data-project="start" datetime="2026-02">Feb 2026</time>
      <ul data-project="tools"><li>HTML</li><li>CSS</li></ul>
