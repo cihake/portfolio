@@ -351,6 +351,15 @@ main {
 	margin-top: var(--space-1);
 }
 
+/* Long descriptions stop after a few lines. The full text is still in the page. */
+.project-card .card-body > p:first-of-type {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	line-clamp: 3;
+	overflow: hidden;
+}
+
 .project-card .card-meta {
 	color: var(--color-text);
 	font-size: 0.85rem;
@@ -641,6 +650,11 @@ main {
 	margin: 0;
 }
 
+:root[data-view="list"] .project-card .card-body > p:first-of-type {
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+}
+
 :root[data-view="list"] .tag-list {
 	margin: 0.25rem 0 0;
 }
@@ -648,7 +662,9 @@ main {
 @media (min-width: 700px) {
 	/* Title and date on the first line, description and tools on the second */
 	:root[data-view="list"] .project-card .card-body {
-		grid-template-columns: 1fr auto;
+		/* The right column fits its content but never grows past 18rem or 40% of the card, so the
+		   description keeps the room it needs to be readable. */
+		grid-template-columns: minmax(0, 1fr) fit-content(min(18rem, 40%));
 		grid-template-areas:
 			"title meta"
 			"desc tags";
@@ -998,6 +1014,13 @@ main {
 	margin: 0;
 }
 
+.lightbox-scroll {
+	max-width: 100%;
+	max-height: calc(100vh - 8rem);
+	max-height: calc(100dvh - 8rem);
+	border-radius: 6px;
+}
+
 .lightbox-img {
 	display: block;
 	width: auto;
@@ -1008,6 +1031,24 @@ main {
 	object-fit: contain;
 	border-radius: 6px;
 	background: var(--color-white);
+}
+
+/* Tall images show at full width and scroll, instead of shrinking to fit. */
+.lightbox-scroll.is-tall {
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	background: var(--color-white);
+}
+
+.lightbox-scroll.is-tall:focus-visible {
+	outline: 3px solid var(--color-pop);
+	outline-offset: 3px;
+}
+
+.lightbox-scroll.is-tall .lightbox-img {
+	max-width: min(100%, 60rem);
+	max-height: none;
+	border-radius: 0;
 }
 
 .lightbox-caption {
@@ -1053,4 +1094,34 @@ main {
 			opacity: 0;
 		}
 	}
+}
+
+/* Tall screenshots are cropped to a square on the page (js/lightbox.js shows
+   the whole thing when clicked). */
+.zoom-button {
+	position: relative;
+}
+
+.zoom-button img {
+	height: auto;
+	max-height: 40rem;
+	object-fit: cover;
+	object-position: top;
+}
+
+.zoom-button.is-cropped::after {
+	content: "Click to see the full image";
+	position: absolute;
+	left: 50%;
+	bottom: var(--space-1);
+	transform: translateX(-50%);
+	max-width: calc(100% - var(--space-2));
+	padding: 0.3rem 0.8rem;
+	border-radius: 999px;
+	background: rgba(0, 0, 0, 0.78);
+	color: #ffffff;
+	font-size: 0.85rem;
+	line-height: 1.3;
+	white-space: nowrap;
+	pointer-events: none;
 }

@@ -21,15 +21,32 @@
 		'<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">' +
 		'<path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>' +
 		'</svg></button>' +
-		'<figure class="lightbox-figure"><img class="lightbox-img" alt="">' +
+		'<figure class="lightbox-figure"><div class="lightbox-scroll"><img class="lightbox-img" alt=""></div>' +
 		'<figcaption class="lightbox-caption"></figcaption></figure>';
 	document.body.appendChild(dialog);
 
 	var bigImg = dialog.querySelector('.lightbox-img');
+	var scroller = dialog.querySelector('.lightbox-scroll');
 	var caption = dialog.querySelector('.lightbox-caption');
 	var closeBtn = dialog.querySelector('.lightbox-close');
 
+	// Images taller than this (height / width) are cropped on the page and
+	// scroll in the enlarged view. The page crop (40rem tall) is in styles.css.
+	var TALL_RATIO = 1.3;
+
 	function open(img) {
+		var tall = img.naturalWidth > 0 && img.naturalHeight / img.naturalWidth > TALL_RATIO;
+		scroller.classList.toggle('is-tall', tall);
+		if (tall) {
+			scroller.tabIndex = 0;
+			scroller.setAttribute('role', 'region');
+			scroller.setAttribute('aria-label', 'Full image, scrollable');
+		} else {
+			scroller.removeAttribute('tabindex');
+			scroller.removeAttribute('role');
+			scroller.removeAttribute('aria-label');
+		}
+		scroller.scrollTop = 0;
 		bigImg.src = img.currentSrc || img.src;
 		bigImg.alt = img.alt;
 		var fig = img.closest('figure');
@@ -52,6 +69,16 @@
 		hint.textContent = ' (opens a larger view)';
 		button.appendChild(hint);
 		button.addEventListener('click', function () { open(img); });
+
+		// Say so on the page when the picture is cropped.
+		function markCropped() {
+			if (!img.naturalWidth || !img.clientWidth) return;
+			var fullHeight = img.clientWidth * img.naturalHeight / img.naturalWidth;
+			button.classList.toggle('is-cropped', fullHeight > img.clientHeight + 1);
+		}
+		if (img.complete) markCropped();
+		img.addEventListener('load', markCropped);
+		window.addEventListener('resize', markCropped);
 	});
 
 	closeBtn.addEventListener('click', function () { dialog.close(); });
@@ -65,5 +92,6 @@
 	dialog.addEventListener('close', function () {
 		document.documentElement.classList.remove('lightbox-open');
 		bigImg.removeAttribute('src');
+		scroller.classList.remove('is-tall');
 	});
 })();
