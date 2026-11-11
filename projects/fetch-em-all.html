@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Fetch 'Em All | Eva Cihak</title>
+	<meta name="description" content="Fetch 'Em All: a Pokédex web app built with vanilla JavaScript that pulls live data from PokéAPI.">
+	<link rel="stylesheet" href="../css/styles.css">
+	<script src="../js/theme.js"></script>
+	<script src="../js/lightbox.js" defer></script>
+</head>
+
+<body>
+	<a class="skip-link" href="#main">Skip to content</a>
+
+	<header class="site-header">
+		<div class="container">
+			<a class="site-title" href="../index.html">Eva Cihak</a>
+			<nav class="site-nav" aria-label="Main">
+				<ul>
+					<li><a href="../index.html">Home</a></li>
+					<li><a href="../projects.html">Projects</a></li>
+					<li><a href="../resume.html">Resume</a></li>
+					<li>
+						<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch to dark theme" hidden>
+							<svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+							<svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+						</button>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<main id="main">
+		<article class="container project">
+			<p class="back-link"><a href="../projects.html">&larr; All projects</a></p>
+
+			<h1 data-project="title">Fetch 'Em All</h1>
+			<p class="project-summary" data-project="description">A Pokédex web app that pulls live data from PokéAPI. Browse and search Pokémon, then open a detail view with abilities and base stats.</p>
+
+			<dl class="project-details">
+				<div>
+					<dt>Started</dt>
+					<dd><time data-project="start" datetime="2026-04">Apr 2026</time></dd>
+				</div>
+				<div>
+					<dt>Built with</dt>
+					<dd>
+						<ul class="tag-list" data-project="tools" aria-label="Tools used">
+							<li>HTML</li>
+							<li>CSS</li>
+							<li>JavaScript</li>
+							<li>PokéAPI</li>
+						</ul>
+					</dd>
+				</div>
+				<div>
+					<dt>Course</dt>
+					<dd>WEB 241, JavaScript Technologies and Applications (Spring 2026)</dd>
+				</div>
+				<div>
+					<dt>Source code</dt>
+					<dd><a href="https://github.com/cihake/fetch-em-all" target="_blank" rel="noopener noreferrer">github.com/cihake/fetch-em-all</a></dd>
+				</div>
+			</dl>
+
+			<figure>
+				<img data-project="thumbnail" src="../assets/projects/fetch-em-all/card.png" alt="The detail view for Decidueye-Hisui, open over search results for &quot;hisui&quot;. It shows the Pok&eacute;mon's artwork, Grass and Fighting type badges, height, weight, abilities, base experience, and a bar for each of the six base stats." width="1068" height="1027">
+				<figcaption>The detail view for a Pok&eacute;mon found by searching &ldquo;hisui&rdquo;.</figcaption>
+			</figure>
+
+			<section aria-labelledby="overview">
+				<h2 id="overview">Overview</h2>
+				<p>Fetch 'Em All is a client-side JavaScript app built for WEB 241. It fetches live data from <a href="https://pokeapi.co/" target="_blank" rel="noopener noreferrer">PokéAPI</a>, a public web API, and presents it as a browsable, searchable Pokédex. The assignment asked for modern, modular JavaScript that handles loading, empty, and error states and stays accessible, and those requirements shaped the design.</p>
+			</section>
+
+			<section aria-labelledby="features">
+				<h2 id="features">Features</h2>
+				<ul>
+					<li>A paginated grid of 20 Pokémon per page. Each card shows the sprite, number, name, and type badges.</li>
+					<li>Search by name (partial names work) or by Pokédex number, such as <code>#25</code>.</li>
+					<li>A detail view with official artwork, height, weight, abilities, base experience, and a bar for each of the six base stats.</li>
+					<li>Loading, error, and &ldquo;no results&rdquo; states for every request.</li>
+					<li>Keyboard and screen reader support. Cards can be focused and opened with Enter or Space, Escape closes the detail view and returns focus to the card you opened, and page changes are announced.</li>
+				</ul>
+			</section>
+
+			<section aria-labelledby="screenshots">
+				<h2 id="screenshots">More screenshots</h2>
+				<figure>
+					<img src="../assets/projects/fetch-em-all/gallery.png" alt="The home page. A red header holds the Fetch 'Em All logo and a search box. Below it are a welcome message, two ways to search, and a grid of Pok&eacute;mon cards from Bulbasaur to Pidgeot, each with a sprite, number, name, and type badges." width="1302" height="1027" loading="lazy">
+					<figcaption>The home page, showing the first page of Pok&eacute;mon.</figcaption>
+				</figure>
+				<figure>
+					<img src="../assets/projects/fetch-em-all/search.png" alt="Search results for &quot;mega&quot;, page 5 of 5. A grid of Mega form cards with type badges is followed by Previous and Next buttons, with Next disabled because this is the last page." width="1068" height="1027" loading="lazy">
+					<figcaption>Search results are paged too, with the Next button disabled on the last page.</figcaption>
+				</figure>
+			</section>
+
+			<section aria-labelledby="how-its-built">
+				<h2 id="how-its-built">How it's built</h2>
+				<p>Plain HTML, CSS, and JavaScript with no framework and no build step. The JavaScript is split into three files, each with one job:</p>
+				<ul>
+					<li><code>api.js</code> holds the fetch helpers for PokéAPI.</li>
+					<li><code>ui.js</code> turns data into HTML for the grid, the status messages, and the detail view.</li>
+					<li><code>app.js</code> keeps the app's state and wires up events, pagination, and search.</li>
+				</ul>
+			</section>
+
+			<section aria-labelledby="challenges">
+				<h2 id="challenges">Challenges and solutions</h2>
+				<ul>
+					<li><strong>The list endpoint returns only names and links.</strong> To show sprites and types, each page makes one request per Pokémon. They run in parallel with <code>Promise.all</code>, so a page of 20 appears together instead of one card at a time.</li>
+					<li><strong>PokéAPI has no search endpoint.</strong> A number search requests that Pokémon directly. A name search downloads the full list of names once, keeps it in memory, and filters it a moment after you stop typing, so later searches don't download it again.</li>
+					<li><strong>Search results need pages too.</strong> They are paged 20 at a time with their own offset, separate from the main browse view, so switching between searching and browsing works cleanly.</li>
+				</ul>
+			</section>
+
+			<section aria-labelledby="next-time">
+				<h2 id="next-time">What I'd do differently</h2>
+				<ul>
+					<li>Keep keyboard focus inside the detail view while it is open. Right now Tab can move to the page behind it.</li>
+					<li>Cancel out-of-date searches, so a slow response can't replace the results of a newer one.</li>
+					<li>Cache Pokémon that were already fetched. The detail view requests data the grid has already loaded.</li>
+					<li>Respect the reduced-motion setting for the loading spinner and the smooth scrolling.</li>
+					<li>Add automated tests for the search and pagination logic.</li>
+				</ul>
+			</section>
+
+			<p class="back-link"><a href="../projects.html">&larr; All projects</a></p>
+		</article>
+	</main>
+
+	<footer class="site-footer">
+		<div class="container">
+			<p>&copy; 2026 Eva Cihak. Designed and built by hand with HTML and CSS.</p>
+		</div>
+	</footer>
+</body>
+
+</html>
